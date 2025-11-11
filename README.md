@@ -1,6 +1,6 @@
-# Tremendous for Platforms sample app
+# Tremendous Connect sample app
 
-This is a sample application that demonstrates how to integrate with Tremendous for Platforms.
+This is a sample application that demonstrates how to integrate with Tremendous Connect.
 
 ## Steps to integrate
 
@@ -41,7 +41,7 @@ The following sections describe the two webhooks supported by this sample app.
 
 #### `CONNECTED_ORGANIZATIONS.REGISTERED`
 
-This webhook is triggered when your customer goes through the Tremendous for Platforms flow.
+This webhook is triggered when your customer goes through the Tremendous Connect flow.
 When receiving it, the sample app will [process the payload](https://github.com/tremendous-rewards/tremendous-for-platforms-sample-app/blob/acf796c145a8eec2f3f538735f4e674cc9b17bba/controllers/webhooks_controller.rb#L20-L22) and update the organization with the Tremendous organization ID.
 
 This webhook can also be used to inform your system that the end-user has completed the flow, and the organization is pending review by Tremendous.
@@ -62,7 +62,7 @@ You'll need to have both a OAuth access token and a refresh token for the organi
 
 1. Listen to the `CONNECTED_ORGANIZATIONS.OAUTH.GRANTED` webhook, and refer to the [webhooks section](#listening-for-webhooks) for more details on how to handle it
    - this option will make the OAuth integration seamless to the end-user, and requires no further manual action
-2. If webhooks are not configured, once the organization is approved by Tremendous and the first time the end-user accesses the Tremendous for Platforms flow, the OAuth authorization flow will be triggered automatically
+2. If webhooks are not configured, once the organization is approved by Tremendous and the first time the end-user accesses the Tremendous Connect flow, the OAuth authorization flow will be triggered automatically
    - when the end-user authorizes the OAuth application, they'll be redirected back to the platform, to the `return_uri` configured when registering the OAuth application
    - please refer to the [OAuth 2.0 docs](https://developers.tremendous.com/docs/oauth-20#step-3-create-an-oauth-authorization-request) for more details
 
@@ -116,7 +116,7 @@ Please refer to the [Tremendous API docs](https://developers.tremendous.com/refe
 #### ngrok setup {#ngrok-setup}
 
 When testing the flow end-to-end, this application needs to be publicly accessible. Tremendous will
-redirect back to the platform from the Tremendous for Platforms flow, or when sending webhooks.
+redirect back to the platform from the Tremendous Connect flow, or when sending webhooks.
 This can be easily achieved by using a service like [ngrok](https://ngrok.com/).
 
 Just make sure to boot the app with:
