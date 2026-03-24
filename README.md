@@ -79,7 +79,7 @@ Please refer to the [Tremendous API docs](https://developers.tremendous.com/refe
 
 ### Requirements
 
-- Ruby 2.7+
+- Ruby 3.2+
 - Bundler
 - SQLite3
 
