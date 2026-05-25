@@ -58,7 +58,7 @@ To make it easier to manage the OAuth boilerplate, this sample app uses the `oau
 
 Tremendous supports [OAuth 2.0 authentication](https://developers.tremendous.com/docs/oauth-20), allowing you to securely make API calls on behalf of your customers.
 
-You'll need to have both a OAuth access token and a refresh token for the organization. There are two ways to get these tokens:
+You'll need to have both an OAuth access token and a refresh token for the organization. There are two ways to get these tokens:
 
 1. Listen to the `CONNECTED_ORGANIZATIONS.OAUTH.GRANTED` webhook, and refer to the [webhooks section](#listening-for-webhooks) for more details on how to handle it
    - this option will make the OAuth integration seamless to the end-user, and requires no further manual action
@@ -73,7 +73,7 @@ The example in the code uses the `oauth2` Ruby gem to handle the OAuth boilerpla
 
 Please refer to the [Tremendous API docs](https://developers.tremendous.com/reference/create-order) for more details on any other supported endpoints.
 
-![oauth-api-call](docs/images/oauth-api-call.png).
+![oauth-api-call](docs/images/oauth-api-call.png)
 
 ## Setup instructions
 
@@ -97,8 +97,8 @@ Please refer to the [Tremendous API docs](https://developers.tremendous.com/refe
    ```
 
 3. Configure your environment:
-   - Check `.env.example` to see what environment variables are needed
-   - Create your own `.env`, using `.env.example` file as a base, and update the blank keys with the appropriate values for your environment
+   - Check `.env.sample` to see what environment variables are needed
+   - Create your own `.env`, using `.env.sample` file as a base, and update the blank keys with the appropriate values for your environment
 
 4. Start the server:
    ```bash
