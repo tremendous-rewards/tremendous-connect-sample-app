@@ -56,6 +56,103 @@
           </div>
         <% end %>
       </div>
+      <hr class="my-4">
+      <h5 class="mb-1">KYB pass-through <span class="text-muted fw-normal">(optional)</span></h5>
+      <p class="text-muted small mb-3">
+        If you already collected KYB info from this client, fill it in here. It's
+        sent to Tremendous as the <code>kyb</code> object on
+        <code>POST /connected_organizations</code> and pre-fills the end client's
+        onboarding form. Every field is optional and remains editable by the end client.
+      </p>
+
+      <div class="mb-3">
+        <label for="organization_kyb_company_name" class="form-label">Company Name</label>
+        <input type="text"
+               id="organization_kyb_company_name"
+               name="organization[kyb_company_name]"
+               class="form-control"
+               value="<%= @organization.kyb_company_name %>">
+      </div>
+      <div class="mb-3">
+        <label for="organization_kyb_doing_business_as" class="form-label">Doing Business As (DBA)</label>
+        <input type="text"
+               id="organization_kyb_doing_business_as"
+               name="organization[kyb_doing_business_as]"
+               class="form-control"
+               value="<%= @organization.kyb_doing_business_as %>">
+      </div>
+      <div class="mb-3">
+        <label for="organization_kyb_company_structure" class="form-label">Company Structure (entity type)</label>
+        <input type="text"
+               id="organization_kyb_company_structure"
+               name="organization[kyb_company_structure]"
+               class="form-control"
+               placeholder="e.g. llc, corporation, sole_proprietorship"
+               value="<%= @organization.kyb_company_structure %>">
+      </div>
+      <div class="mb-3">
+        <label for="organization_kyb_company_registration_number" class="form-label">Company Registration Number (Tax ID)</label>
+        <input type="text"
+               id="organization_kyb_company_registration_number"
+               name="organization[kyb_company_registration_number]"
+               class="form-control"
+               value="<%= @organization.kyb_company_registration_number %>">
+      </div>
+      <div class="mb-3">
+        <label for="organization_kyb_address_line1" class="form-label">Address Line 1</label>
+        <input type="text"
+               id="organization_kyb_address_line1"
+               name="organization[kyb_address_line1]"
+               class="form-control"
+               value="<%= @organization.kyb_address_line1 %>">
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="organization_kyb_address_city" class="form-label">City</label>
+          <input type="text"
+                 id="organization_kyb_address_city"
+                 name="organization[kyb_address_city]"
+                 class="form-control"
+                 value="<%= @organization.kyb_address_city %>">
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="organization_kyb_address_state" class="form-label">State</label>
+          <input type="text"
+                 id="organization_kyb_address_state"
+                 name="organization[kyb_address_state]"
+                 class="form-control"
+                 value="<%= @organization.kyb_address_state %>">
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="organization_kyb_address_zip" class="form-label">Zip</label>
+          <input type="text"
+                 id="organization_kyb_address_zip"
+                 name="organization[kyb_address_zip]"
+                 class="form-control"
+                 value="<%= @organization.kyb_address_zip %>">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label for="organization_kyb_country_code" class="form-label">Country Code</label>
+          <input type="text"
+                 id="organization_kyb_country_code"
+                 name="organization[kyb_country_code]"
+                 class="form-control"
+                 placeholder="e.g. US"
+                 value="<%= @organization.kyb_country_code %>">
+        </div>
+        <div class="col-md-8 mb-3">
+          <label for="organization_kyb_website_url" class="form-label">Website URL</label>
+          <input type="url"
+                 id="organization_kyb_website_url"
+                 name="organization[kyb_website_url]"
+                 class="form-control"
+                 placeholder="https://example.com"
+                 value="<%= @organization.kyb_website_url %>">
+        </div>
+      </div>
+
       <button type="submit" class="btn btn-primary">Create</button>
       <a href="/organizations" class="btn btn-secondary">Cancel</a>
     </form>

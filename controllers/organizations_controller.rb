@@ -38,9 +38,13 @@ class OrganizationsController < BaseController
     @organization = Organization.find(params[:id])
 
     begin
-      # Tremendous API call to create the connected organization
+      # Tremendous API call to create the connected organization, optionally
+      # passing through any KYB info the platform already collected so the end
+      # client's onboarding form is pre-filled.
       if @organization.tremendous_connected_organization_id.blank?
-        response = TremendousApiService.create_connected_organization
+        response = TremendousApiService.create_connected_organization(
+          kyb: @organization.prefilled_kyb_details
+        )
 
         payload = response.fetch("connected_organization")
         @organization.update!(tremendous_connected_organization_id: payload.fetch("id"))
