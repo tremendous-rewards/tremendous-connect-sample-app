@@ -41,6 +41,17 @@
       </div>
     </div>
 
+    <% if @organization.prefilled_kyb_details %>
+      <div class="row mb-4">
+        <div class="col-12">
+          <h3 class="mb-3">KYB Pre-fill <span class="text-muted fs-6 fw-normal">(sent to Tremendous as the <code>kyb</code> object)</span></h3>
+          <div class="bg-light p-3 rounded">
+            <pre class="mb-0 overflow-auto" style="max-height: 400px;"><code><%= JSON.pretty_generate(@organization.prefilled_kyb_details) %></code></pre>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
     <div>
       <% if @organization.tremendous_connected_organization_member_id.blank? %>
         <form action="/organizations/<%= @organization.id %>/tremendous_setup" method="post" class="d-inline">

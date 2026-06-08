@@ -31,6 +31,45 @@ This section assumes that:
    4. The backend will [return the URL to the frontend](https://github.com/tremendous-rewards/tremendous-for-platforms-sample-app/blob/acf796c145a8eec2f3f538735f4e674cc9b17bba/controllers/organizations_controller.rb#L81), which will [redirect the user to the session URL](https://github.com/tremendous-rewards/tremendous-for-platforms-sample-app/blob/acf796c145a8eec2f3f538735f4e674cc9b17bba/views/organizations/show.erb#L70-L90)
    ![tremendous-flow](docs/images/tremendous-flow.png)
 
+### Pre-filling KYB info (optional)
+
+If your platform already collects KYB (Know Your Business) information from your end
+clients, you can forward it to Tremendous so the end client doesn't have to re-type it.
+When provided, Tremendous pre-fills the onboarding form with this data; the end client
+still reviews every field, can edit anything, and submits the form as usual.
+
+To pass it through, include an optional `kyb` object in the body of the
+[`POST /connected_organizations`](https://developers.tremendous.com/reference/create-connected-organization)
+call. This sample app collects these fields in the optional "KYB pass-through" section of
+the "New Organization" form and sends them when you click "Set up on Tremendous"
+(see [`TremendousApiService.create_connected_organization`](services/tremendous_api_service.rb)).
+
+The supported fields are:
+
+```jsonc
+{
+  "client_id": "<your-oauth-client-id>",
+  "kyb": {
+    "company_name": "Acme Inc",
+    "doing_business_as": "Acme",
+    "company_structure": "llc",
+    "company_registration_number": "12-3456789",
+    "country_code": "US",
+    "website_url": "https://acme.example",
+    "address": {
+      "line1": "1 Main St",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78701"
+    }
+  }
+}
+```
+
+Every field is optional. This sample app only includes the fields you actually fill in and
+omits the `kyb` object entirely when none are provided, so the call works unchanged when you
+have no KYB data to forward.
+
 ### Listening for webhooks
 
 This sample app shows how to listen for webhooks from Tremendous. These are handled by the [WebhooksController](https://github.com/tremendous-rewards/tremendous-for-platforms-sample-app/blob/main/controllers/webhooks_controller.rb) and are expected to be received in the `/webhooks` path.
