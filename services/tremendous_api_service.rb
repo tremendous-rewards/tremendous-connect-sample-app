@@ -5,12 +5,12 @@ class TremendousApiService
   include HTTParty
   base_uri ENV["TREMENDOUS_API_URL"]
 
-  def self.create_connected_organization(kyb: nil)
+  def self.create_connected_organization(kyb_prefill: nil)
     body = { client_id: ENV["OAUTH_CLIENT_ID"] }
     # Optional KYB pass-through: when the platform already collected KYB on its
-    # end client, forward it so the onboarding form is pre-filled. Omitted
+    # end client, forward it so the onboarding form is prefilled. Omitted
     # entirely when no KYB data is available.
-    body[:kyb] = kyb if kyb
+    body[:kyb_prefill] = kyb_prefill if kyb_prefill
 
     handle_response(
       post(

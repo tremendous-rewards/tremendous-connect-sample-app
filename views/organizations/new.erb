@@ -60,8 +60,8 @@
       <h5 class="mb-1">KYB pass-through <span class="text-muted fw-normal">(optional)</span></h5>
       <p class="text-muted small mb-3">
         If you already collected KYB info from this client, fill it in here. It's
-        sent to Tremendous as the <code>kyb</code> object on
-        <code>POST /connected_organizations</code> and pre-fills the end client's
+        sent to Tremendous as the <code>kyb_prefill</code> object on
+        <code>POST /connected_organizations</code> and prefills the end client's
         onboarding form. Every field is optional and remains editable by the end client.
       </p>
 
@@ -87,7 +87,7 @@
                id="organization_kyb_company_structure"
                name="organization[kyb_company_structure]"
                class="form-control"
-               placeholder="e.g. llc, corporation, sole_proprietorship"
+               placeholder="e.g. Corporation (Inc), Limited liability company (LLC), Sole proprietorship"
                value="<%= @organization.kyb_company_structure %>">
       </div>
       <div class="mb-3">

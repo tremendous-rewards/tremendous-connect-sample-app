@@ -40,10 +40,10 @@ class OrganizationsController < BaseController
     begin
       # Tremendous API call to create the connected organization, optionally
       # passing through any KYB info the platform already collected so the end
-      # client's onboarding form is pre-filled.
+      # client's onboarding form is prefilled.
       if @organization.tremendous_connected_organization_id.blank?
         response = TremendousApiService.create_connected_organization(
-          kyb: @organization.prefilled_kyb_details
+          kyb_prefill: @organization.kyb_prefill_details
         )
 
         payload = response.fetch("connected_organization")
