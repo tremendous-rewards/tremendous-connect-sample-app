@@ -35,10 +35,10 @@ This section assumes that:
 
 If your platform already collects KYB (Know Your Business) information from your end
 clients, you can forward it to Tremendous so the end client doesn't have to re-type it.
-When provided, Tremendous pre-fills the onboarding form with this data; the end client
+When provided, Tremendous prefills the onboarding form with this data; the end client
 still reviews every field, can edit anything, and submits the form as usual.
 
-To pass it through, include an optional `kyb` object in the body of the
+To pass it through, include an optional `kyb_prefill` object in the body of the
 [`POST /connected_organizations`](https://developers.tremendous.com/reference/create-connected-organization)
 call. This sample app collects these fields in the optional "KYB pass-through" section of
 the "New Organization" form and sends them when you click "Set up on Tremendous"
@@ -49,26 +49,24 @@ The supported fields are:
 ```jsonc
 {
   "client_id": "<your-oauth-client-id>",
-  "kyb": {
+  "kyb_prefill": {
     "company_name": "Acme Inc",
     "doing_business_as": "Acme",
-    "company_structure": "llc",
+    "company_structure": "Corporation (Inc)",
     "company_registration_number": "12-3456789",
     "country_code": "US",
     "website_url": "https://acme.example",
-    "address": {
-      "line1": "1 Main St",
-      "city": "Austin",
-      "state": "TX",
-      "zip": "78701"
-    }
+    "address_1": "1 Main St",
+    "city": "Austin",
+    "state": "TX",
+    "postal_code": "78701"
   }
 }
 ```
 
 Every field is optional. This sample app only includes the fields you actually fill in and
-omits the `kyb` object entirely when none are provided, so the call works unchanged when you
-have no KYB data to forward.
+omits the `kyb_prefill` object entirely when none are provided, so the call works unchanged
+when you have no KYB data to forward.
 
 ### Listening for webhooks
 
