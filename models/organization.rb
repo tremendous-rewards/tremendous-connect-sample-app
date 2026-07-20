@@ -1,5 +1,8 @@
 class Organization < ActiveRecord::Base
+  CURRENCY_CODES = %w[USD GBP EUR CAD].freeze
+
   validates :name, presence: true
+  validates :currency_code, inclusion: { in: CURRENCY_CODES }, allow_blank: true
 
   # Assembles the optional `kyb_prefill` pass-through object sent to Tremendous
   # on POST /connected_organizations. Only non-blank fields are included, so the

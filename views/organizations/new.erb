@@ -152,6 +152,25 @@
                  value="<%= @organization.kyb_website_url %>">
         </div>
       </div>
+      <div class="mb-3">
+        <label for="organization_currency_code" class="form-label">Currency code</label>
+        <select id="organization_currency_code"
+                name="organization[currency_code]"
+                class="form-select <%= 'is-invalid' if @organization.errors[:currency_code].any? %>">
+          <option value="" <%= 'selected' if @organization.currency_code.blank? %>>&lt;empty&gt;</option>
+          <% Organization::CURRENCY_CODES.each do |currency_code| %>
+            <option value="<%= currency_code %>" <%= 'selected' if @organization.currency_code == currency_code %>><%= currency_code %></option>
+          <% end %>
+        </select>
+        <% if @organization.errors[:currency_code].any? %>
+          <div class="invalid-feedback">
+            <%= @organization.errors[:currency_code].join(', ') %>
+          </div>
+        <% end %>
+        <div class="form-text">
+          &lt;empty&gt; omits <code>currency_code</code> from the API request and exercises the USD default.
+        </div>
+      </div>
 
       <button type="submit" class="btn btn-primary">Create</button>
       <a href="/organizations" class="btn btn-secondary">Cancel</a>

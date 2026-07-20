@@ -12,6 +12,15 @@
           <dt class="col-sm-4">Creator Email</dt>
           <dd class="col-sm-8"><%= @organization.creator_email %></dd>
 
+          <dt class="col-sm-4">Currency Code</dt>
+          <dd class="col-sm-8">
+            <% if @organization.currency_code.present? %>
+              <%= @organization.currency_code %>
+            <% else %>
+              &lt;empty&gt; (<code>currency_code</code> omitted; defaults to USD)
+            <% end %>
+          </dd>
+
           <dt class="col-sm-4">Created At</dt>
           <dd class="col-sm-8"><%= @organization.created_at&.strftime('%B %d, %Y %H:%M') %></dd>
         </dl>
