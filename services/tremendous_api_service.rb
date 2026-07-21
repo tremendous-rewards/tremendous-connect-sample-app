@@ -11,7 +11,7 @@ class TremendousApiService
     # end client, forward it so the onboarding form is prefilled. Omitted
     # entirely when no KYB data is available.
     body[:kyb_prefill] = kyb_prefill if kyb_prefill
-    body[:currency_code] = currency_code unless currency_code.to_s.empty?
+    body[:currency_code] = currency_code if currency_code.present?
 
     handle_response(
       post(
