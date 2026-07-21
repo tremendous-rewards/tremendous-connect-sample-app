@@ -152,6 +152,14 @@
                  value="<%= @organization.kyb_website_url %>">
         </div>
       </div>
+
+      <hr class="my-4">
+      <h5 class="mb-1">Connected organization currency <span class="text-muted fw-normal">(optional)</span></h5>
+      <p class="text-muted small mb-3">
+        Sent to Tremendous as the standalone <code>currency_code</code> field,
+        separate from the <code>kyb_prefill</code> object.
+      </p>
+
       <div class="mb-3">
         <label for="organization_currency_code" class="form-label">Currency code</label>
         <select id="organization_currency_code"
@@ -169,6 +177,8 @@
         <% end %>
         <div class="form-text">
           &lt;empty&gt; omits <code>currency_code</code> from the API request and exercises the USD default.
+          <br>
+          CAD is included for testing and is expected to fail during Tremendous setup because the API does not support it.
         </div>
       </div>
 
