@@ -1,5 +1,12 @@
 class Organization < ActiveRecord::Base
+  # CAD is intentionally included for testing the API's validation-error path;
+  # Tremendous only supports USD, GBP, and EUR as explicit currency codes.
+  CURRENCY_CODES = %w[USD GBP EUR CAD].freeze
+
+  normalizes :currency_code, with: ->(code) { code.presence }
+
   validates :name, presence: true
+  validates :currency_code, inclusion: { in: CURRENCY_CODES }, allow_blank: true
 
   # Assembles the optional `kyb_prefill` pass-through object sent to Tremendous
   # on POST /connected_organizations. Only non-blank fields are included, so the

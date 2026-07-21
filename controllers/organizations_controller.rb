@@ -43,7 +43,8 @@ class OrganizationsController < BaseController
       # client's onboarding form is prefilled.
       if @organization.tremendous_connected_organization_id.blank?
         response = TremendousApiService.create_connected_organization(
-          kyb_prefill: @organization.kyb_prefill_details
+          kyb_prefill: @organization.kyb_prefill_details,
+          currency_code: @organization.currency_code
         )
 
         payload = response.fetch("connected_organization")

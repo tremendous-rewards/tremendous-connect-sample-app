@@ -68,6 +68,14 @@ Every field is optional. This sample app only includes the fields you actually f
 omits the `kyb_prefill` object entirely when none are provided, so the call works unchanged
 when you have no KYB data to forward.
 
+### Selecting a connected organization currency (optional)
+
+The "New Organization" form includes a currency selector for exercising the optional
+`currency_code` field on `POST /connected_organizations`. Selecting `<empty>` omits the
+field and exercises the API's USD default. USD, GBP, and EUR are supported explicit
+choices. CAD is included intentionally to demonstrate the API's validation-error response;
+the connected organization and member IDs remain unset when that request is rejected.
+
 ### Listening for webhooks
 
 This sample app shows how to listen for webhooks from Tremendous. These are handled by the [WebhooksController](https://github.com/tremendous-rewards/tremendous-for-platforms-sample-app/blob/main/controllers/webhooks_controller.rb) and are expected to be received in the `/webhooks` path.

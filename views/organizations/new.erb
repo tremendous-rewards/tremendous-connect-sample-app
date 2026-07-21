@@ -153,6 +153,35 @@
         </div>
       </div>
 
+      <hr class="my-4">
+      <h5 class="mb-1">Connected organization currency <span class="text-muted fw-normal">(optional)</span></h5>
+      <p class="text-muted small mb-3">
+        Sent to Tremendous as the standalone <code>currency_code</code> field,
+        separate from the <code>kyb_prefill</code> object.
+      </p>
+
+      <div class="mb-3">
+        <label for="organization_currency_code" class="form-label">Currency code</label>
+        <select id="organization_currency_code"
+                name="organization[currency_code]"
+                class="form-select <%= 'is-invalid' if @organization.errors[:currency_code].any? %>">
+          <option value="" <%= 'selected' if @organization.currency_code.blank? %>>&lt;empty&gt;</option>
+          <% Organization::CURRENCY_CODES.each do |currency_code| %>
+            <option value="<%= currency_code %>" <%= 'selected' if @organization.currency_code == currency_code %>><%= currency_code %></option>
+          <% end %>
+        </select>
+        <% if @organization.errors[:currency_code].any? %>
+          <div class="invalid-feedback">
+            <%= @organization.errors[:currency_code].join(', ') %>
+          </div>
+        <% end %>
+        <div class="form-text">
+          &lt;empty&gt; omits <code>currency_code</code> from the API request and exercises the USD default.
+          <br>
+          CAD is included for testing and is expected to fail during Tremendous setup because the API does not support it.
+        </div>
+      </div>
+
       <button type="submit" class="btn btn-primary">Create</button>
       <a href="/organizations" class="btn btn-secondary">Cancel</a>
     </form>
