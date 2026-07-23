@@ -49,6 +49,7 @@ The supported fields are:
 ```jsonc
 {
   "client_id": "<your-oauth-client-id>",
+  "currency_code": "USD",
   "kyb_prefill": {
     "company_name": "Acme Inc",
     "doing_business_as": "Acme",
