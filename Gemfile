@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'dotenv', '~> 3.1.7'
 gem 'httparty', '~> 0.24.0'
-gem 'oauth2', '~> 2.0.9'
+gem 'oauth2', '~> 2.0.22'
 gem 'sinatra', '~> 4.2.0'
 gem 'sqlite3', '~> 2.9.5'
 gem 'sinatra-activerecord', '~> 2.0.28'
