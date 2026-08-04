@@ -58,6 +58,7 @@ The supported fields are:
     "country_code": "US",
     "website_url": "https://acme.example",
     "address_1": "1 Main St",
+    "address_2": "Suite 100",
     "city": "Austin",
     "state": "TX",
     "postal_code": "78701"

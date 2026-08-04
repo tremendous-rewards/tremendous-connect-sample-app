@@ -22,6 +22,7 @@ class Organization < ActiveRecord::Base
       country_code: kyb_country_code,
       website_url: kyb_website_url,
       address_1: kyb_address_line1,
+      address_2: kyb_address_line2,
       city: kyb_address_city,
       state: kyb_address_state,
       postal_code: kyb_address_zip
